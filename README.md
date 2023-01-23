@@ -6,7 +6,7 @@
 
 1. Clone the repository
 2. Open the index.html file in your browser
-3. Or you can visit the [live demo](https://example.com)
+3. Or you can visit the [live demo](https://gloirekiba.github.io/random-quote/)
 
 ## How to contribute
 
