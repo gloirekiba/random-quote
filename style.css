@@ -88,7 +88,8 @@ body {
   z-index: 9999;
 }
 
-.loader .spinner {
+.loader::after {
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
