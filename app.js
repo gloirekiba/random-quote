@@ -1,5 +1,6 @@
 const QUOTE_API_URL = "https://api.quotable.io/random";
 const USER_API_URL = "https://randomuser.me/api/";
+const LOADER_TIME = 2000;
 
 // Select the DOM elements
 const authorImg = document.getElementById("authorImg");
@@ -28,10 +29,7 @@ async function refreshQuote() {
   });
 
   // This is a hack to show the loader for 2 seconds even if the API is fast enough to respond in less than 2 seconds
-  setTimeout(() => {
-    // Hide the loader
-    loader.classList.add("hidden");
-  }, 2000);
+  setTimeout(() => loader.classList.add("hidden"), LOADER_TIME);
 
   // Set the quote and author details
   authorImg.src = user.results[0].picture.large;
