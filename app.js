@@ -50,7 +50,7 @@ function tweetQuote() {
 }
 
 async function fetchApi(url) {
-  return await fetch(url)
+  return fetch(url)
     .then((res) => res.json())
     .then((data) => data)
     .catch((err) => Promise.reject(err));
