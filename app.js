@@ -1,6 +1,6 @@
 const QUOTE_API_URL = "https://api.quotable.io/random";
 const USER_API_URL = "https://randomuser.me/api/";
-const LOADER_MIN_TIME = 2000;
+const LOADER_MIN_TIME = 2500;
 
 // Select the DOM elements
 const authorImg = document.getElementById("authorImg");
@@ -34,7 +34,34 @@ async function refreshQuote() {
   // Set the quote and author details
   authorImg.src = user.results[0].picture.large;
   authorName.innerText = quote.author;
-  quoteText.innerText = quote.content;
+
+  quoteText.innerHTML = "";
+
+  // Split the quote into individual characters and wrap each character in a span
+  for (const char of quote.content) {
+    const span = document.createElement("span");
+    span.innerText = char;
+    quoteText.appendChild(span);
+  }
+
+  // Show the quote character by character
+  let index = 0;
+  function showNextChar() {
+    const spans = quoteText.querySelectorAll("#quoteText span");
+
+    if (index < spans.length) {
+      spans[index].style.opacity = 1;
+      index++;
+      setTimeout(showNextChar, 50);
+    }
+  }
+
+  // wait until the loader is hidden
+  while (!loader.classList.contains("hidden")) {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+
+  showNextChar();
 }
 
 // Call the function once to load the quote on page load
